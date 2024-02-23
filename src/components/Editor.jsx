@@ -9,6 +9,9 @@ import 'codemirror/theme/material.css';
 import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/css/css';
+import 'codemirror/addon/edit/closebrackets';
+import 'codemirror/addon/edit/closetag';
+import 'codemirror/addon/comment/comment';
 
 import '../App.css';
 
@@ -75,6 +78,9 @@ const Editor = ({heading, icon, color, value, onChange}) => {
         options={{
           theme: 'material',
           lineNumbers: true,
+          autoCloseBrackets: true,
+          autoCloseTags: true,
+          extraKeys: {"Ctrl-/" : "toggleComment"}
         }}
       />
     </Container>
