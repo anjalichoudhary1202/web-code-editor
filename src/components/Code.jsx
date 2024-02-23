@@ -7,7 +7,7 @@ import { DataContext } from '../context/DataProvider';
 const Container = styled(Box)`
   display: flex;
   background-color: #060606;
-  height: 50%;
+  height: 50vh;
 `
 const Code = () => {
 
@@ -21,6 +21,7 @@ const Code = () => {
         color='#FF3C41'
         value={html}
         onChange={setHtml}
+        language="xml"
       />
       <Editor 
         heading="CSS"
@@ -28,6 +29,7 @@ const Code = () => {
         color='#0EBEFF'
         value={css}
         onChange={setCss}
+        language="css"
         />
       <Editor 
         heading="JavaScript"
@@ -35,6 +37,7 @@ const Code = () => {
         color='#FCD000'
         value={js}
         onChange={setJs}
+        language="javascript"
       />
     </Container>
   )

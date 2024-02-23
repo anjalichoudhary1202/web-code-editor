@@ -35,7 +35,7 @@ const Header = styled(Box)`
   justify-content: space-between;
   font-weight: 700;
 `
-const Editor = ({heading, icon, color, value, onChange}) => {
+const Editor = ({heading, icon, color, value, onChange, language}) => {
 
   const [open, setOpen] = useState(true);
 
@@ -76,11 +76,12 @@ const Editor = ({heading, icon, color, value, onChange}) => {
         value={value}
         onBeforeChange={handleChange}
         options={{
+          lineWrapping: true,
           theme: 'material',
           lineNumbers: true,
-          autoCloseBrackets: true,
-          autoCloseTags: true,
-          extraKeys: {"Ctrl-/" : "toggleComment"}
+          // autoCloseBrackets: true,
+          autoCloseTags: true,  
+          mode: language,
         }}
       />
     </Container>

@@ -3,7 +3,7 @@ import {Box, styled} from '@mui/material';
 import { DataContext } from '../context/DataProvider';
 
 const Container = styled(Box)`
-  height: 41%;
+  height: 41vh;
 `
 const Result = () => {
 
@@ -28,7 +28,7 @@ const Result = () => {
   },[html,css,js]);
 
   return (
-    <Box>
+    <Container>
       <iframe 
         srcDoc={src}
         title="Output"
@@ -37,7 +37,7 @@ const Result = () => {
         width="100%"
         height="100%"
       />
-    </Box>
+    </Container>
   )
 }
 

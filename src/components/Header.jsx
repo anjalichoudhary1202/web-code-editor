@@ -3,7 +3,7 @@ import { AppBar, Toolbar, styled } from '@mui/material';
 
 const Container = styled(AppBar)`
   background: #060606;
-  height: 9%;
+  height: 9vh;
 `
 const Header = () => {
 
