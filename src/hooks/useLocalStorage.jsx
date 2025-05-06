@@ -1,28 +1,28 @@
-import { useState, useEffect} from 'react'
-
-const PREFIX = 'code-editor-'
+import React, { useState, useEffect} from 'react'
 
 const useLocalStorage = (key, initialValue) => {
-  const prefixedKey = PREFIX + key
+  const prefixedKey = 'code-editor-' + key;
 
-  const [value, setValue] = useState(()=>{
-    const jsonValue = localStorage.getItem(prefixedKey)
+  const [value, setValue] = useState(() => {
+    try {
+      const jsonValue = localStorage.getItem(prefixedKey);
 
-    if( jsonValue != null) return JSON.parse(jsonValue);
+      // Fix: avoid parsing "undefined"
+      if (jsonValue === null || jsonValue === 'undefined') {
+        return typeof initialValue === 'function' ? initialValue() : initialValue;
+      }
 
-    if(typeof initialValue === 'function') {
-      return initialValue()
-    } else{
-      return initialValue;
+      return JSON.parse(jsonValue);
+    } catch (e) {
+      console.error('Failed to parse localStorage key:', prefixedKey, e);
+      return typeof initialValue === 'function' ? initialValue() : initialValue;
     }
   });
 
-  useEffect(()=>{
+  useEffect(() => {
     localStorage.setItem(prefixedKey, JSON.stringify(value));
   }, [prefixedKey, value]);
 
-
   return [value, setValue];
-}
-
+};
 export default useLocalStorage
