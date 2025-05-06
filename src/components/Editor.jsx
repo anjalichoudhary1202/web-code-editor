@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { Box , styled} from '@mui/material';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 
-import { Controlled as ControlledEditor} from 'react-codemirror2';
+import ReactCodeMirror from '@uiw/react-codemirror';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
@@ -39,7 +39,7 @@ const Editor = ({heading, icon, color, value, onChange, language}) => {
 
   const [open, setOpen] = useState(true);
 
-  const handleChange = (editor, data, value) => {
+  const handleChange = (value) => {    
     onChange(value);
   }
 
@@ -71,10 +71,10 @@ const Editor = ({heading, icon, color, value, onChange, language}) => {
           onClick={()=>setOpen(prevState=> !prevState) }
         />
       </Header>
-      <ControlledEditor
+      <ReactCodeMirror
         className='controlled-editor'
         value={value}
-        onBeforeChange={handleChange}
+        onChange={handleChange}
         options={{
           lineWrapping: true,
           theme: 'material',
