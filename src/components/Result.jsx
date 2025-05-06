@@ -32,7 +32,7 @@ const Result = () => {
       <iframe 
         srcDoc={src}
         title="Output"
-        sandbox='allow-scripts'
+        sandbox='allow-scripts allow-modals'
         frameBorder={0}
         width="100%"
         height="100%"
